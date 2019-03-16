@@ -55,3 +55,13 @@ Show the name and per-capita GDP for those countries with a GDP of at least one 
 select name, round(gdp/population, -3)
 from world
 where gdp >1000000000000
+
+Show the name and capital where the name and the capital have the same number of characters.
+SELECT name, capital
+  FROM world
+ Where Length(name) = Length(capital)
+ 
+ Show the name and the capital where the first letters of each match. Don't include countries where the name and the capital are the same word.
+ SELECT name, capital
+FROM world
+Where left(name, 1) = left(capital, 1) AND name <> capital
