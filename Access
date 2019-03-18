@@ -23,4 +23,4 @@ External data --> text file
 #link tables
 Start by closing all the tables 
 Table tools --> relationships -->drag primary key to foriegn key
-Choose rel 1 to many if 1 record can be associated with multiple other records in the other table so one 
+Choose rel 1 to many if 1 record can be associated with multiple other records in the other table, ex: 1 customer can have multiple orders
