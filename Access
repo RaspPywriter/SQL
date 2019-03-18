@@ -1,0 +1,26 @@
+#From excellent Access tutorial by Sali Kaceli https://www.youtube.com/watch?v=xRYSP-yFgb0
+
+#Create a form:
+create --> form wizard --> specify table then specify fields, could create different forms for different fields as a way to control who can 
+edit certain fields
+
+#Create queries:
+create --> query wizard --> simple query wizard 
+to run: double click on query
+
+#Create report:
+create --> report wizard 
+can build from table of query - choose how to sort
+
+#Import Files
+#Excel
+External data --> Excel -->Find file -->choose new table if the data is new, if you want to append you can choose the second option
+Choose primary key and correct field in the wizard, or you can have access create a new primary key
+
+#csv
+External data --> text file 
+
+#link tables
+Start by closing all the tables 
+Table tools --> relationships -->drag primary key to foriegn key
+Choose rel 1 to many if 1 record can be associated with multiple other records in the other table so one 
