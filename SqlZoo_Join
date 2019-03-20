@@ -1,0 +1,26 @@
+Modify it to show the matchid and player name for all goals scored by Germany. To identify German players, check for: teamid = 'GER'
+
+SELECT matchid, player FROM goal 
+  WHERE teamid = 'GER'
+  
+  Show id, stadium, team1, team2 for just game 1012
+
+SELECT id,stadium,team1,team2
+  FROM game
+where id='1012'
+
+Modify it to show the player, teamid, stadium and mdate for every German goal.
+
+SELECT player,teamid, stadium, mdate 
+  FROM game JOIN goal ON (id=matchid)
+where teamid='GER'
+
+
+
+
+Notes:
+SELECT *
+  FROM game JOIN goal ON (id=matchid)
+The FROM clause says to merge data from the goal table with that from the game table. The ON says how to figure out which rows in game go with which rows in goal - the matchid from goal must match id from game. (If we wanted to be more clear/specific we could say 
+ON (game.id=goal.matchid)  
+  
