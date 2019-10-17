@@ -1,11 +1,15 @@
 
-<h1>Questions</h1>
+Questions
 Question 1. How many times do the actors appear in the database?
 
 Question 2. List all of the actors and film titles 
 
+Question 3. List all the customer ids, first name and last name from store 1 ordering by customer last name
 
-<h1>Answers</h1>
+Question 4. List the customer id, first and last name and payment date for all customers that made a payment.
+
+
+Answers
 Answer 1:
 select first_name, last_name, count(first_name) AS CountActor
 from actor
@@ -17,3 +21,13 @@ select actor.first_name, actor.last_name, film.title
 from actor, film, film_actor
 WHERE actor.actor_id = film_actor.actor_id and film.film_id = film_actor.film_id
 
+Answer 3:
+ SELECT customer_id, first_name, last_name
+ FROM customer
+ WHERE store_id = 1
+ ORDER BY last_name;
+  
+Answer 4:
+SELECT customer.customer_id, customer.first_name, customer.last_name, payment.payment_date
+FROM customer
+INNER JOIN payment ON payment.customer_id = customer.customer_id;
