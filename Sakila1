@@ -8,6 +8,11 @@ Question 3. List all the customer ids, first name and last name from store 1 ord
 
 Question 4. List the customer id, first and last name and payment date for all customers that made a payment.
 
+Question 5. List the customer id, first and last names and the customer id from the payment table of all customers whether or not they made a payment
+
+Question 6. List all payments regardless of if someone is a customer and return customer id, first and last name and payment date
+
+Question 7. Create a list of actors and the films they appear in?
 
 Answers
 Answer 1:
@@ -28,6 +33,22 @@ Answer 3:
  ORDER BY last_name;
   
 Answer 4:
-SELECT customer.customer_id, customer.first_name, customer.last_name, payment.payment_date
+SELECT customer.customer_id, customer.first_name, customer.last_name, payment.customer_id
 FROM customer
 INNER JOIN payment ON payment.customer_id = customer.customer_id;
+
+Answer 5:
+SELECT customer.customer_id, customer.first_name, customer.last_name, payment.payment_date
+FROM customer
+LEFT JOIN payment ON payment.customer_id = customer.customer_id;
+
+Answer 6:
+SELECT customer.customer_id, customer.first_name, customer.last_name, payment.payment_date
+FROM customer
+RIGHT JOIN payment ON payment.customer_id = customer.customer_id;
+
+Answer 7:
+SELECT actor.first_name, actor.last_name, film.title
+FROM actor
+INNER JOIN film_actor on film_actor.actor_id = actor.actor_id
+INNER JOIN film ON film_actor.film_id = film.film_id;
