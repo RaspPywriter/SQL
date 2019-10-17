@@ -1,0 +1,19 @@
+<h2>Some Sakila Questions and Answers</h2>
+<h1>Questions</h1>
+Question 1. How many times do the actors appear in the database?
+
+Question 2. List all of the actors and film titles 
+
+
+<h1>Answers</h1>
+Answer 1:
+select first_name, last_name, count(first_name) AS CountActor
+from actor
+group by first_name
+order by CountActor Desc;
+
+Answer 2:
+select actor.first_name, actor.last_name, film.title
+from actor, film, film_actor
+WHERE actor.actor_id = film_actor.actor_id and film.film_id = film_actor.film_id
+
