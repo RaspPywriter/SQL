@@ -14,6 +14,18 @@ Question 6. List all payments regardless of if someone is a customer and return 
 
 Question 7. Create a list of actors and the films they appear in?
 
+Question 8. Find all customers with the last name of Roberts?
+
+Question 9. Find all customers who have a last name that starts with Rob?
+
+Question 10. Find all payments that are greater than $5?
+
+Question 11. Find all payments that are less than or equal to $5?
+
+Question 12. Find all payments that are between $3 and $5?
+
+Question 
+
 Answers
 Answer 1:
 select first_name, last_name, count(first_name) AS CountActor
@@ -52,3 +64,30 @@ SELECT actor.first_name, actor.last_name, film.title
 FROM actor
 INNER JOIN film_actor on film_actor.actor_id = actor.actor_id
 INNER JOIN film ON film_actor.film_id = film.film_id;
+
+Answer 8:
+SELECT * 
+FROM customer
+WHERE last_name = 'Roberts';
+
+Answer 9:
+SELECT * 
+FROM customer
+WHERE last_name LIKE "Rob%";
+
+Answer 10
+SELECT * 
+FROM payment
+WHERE amount > 5;
+
+Answer 11
+SELECT * 
+FROM payment
+WHERE amount <= 5;
+
+Answer 12
+SELECT * 
+FROM payment
+WHERE amount BETWEEN 3 and 5;
+
+
