@@ -1,0 +1,15 @@
+Questions
+Question 1. What are the total amounts each customer spent, only return the customer id and the payment total for each customer.
+Question 2. Compare the total sales by store id?
+
+Answers
+Answer 1.
+SELECT customer.customer_id, SUM(payment.amount) As Sum_Payment
+FROM payment
+INNER JOIN customer ON payment.customer_id = customer.customer_id
+GROUP BY customer.customer_id;
+Answer 2.
+SELECT customer.store_id, SUM(payment.amount) As Sum_Payment
+FROM payment
+INNER JOIN customer ON payment.customer_id = customer.customer_id
+GROUP BY customer.store_id;
