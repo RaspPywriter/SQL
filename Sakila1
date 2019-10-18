@@ -38,9 +38,9 @@ Question 18. Have a different statement appear based upon if the payment amount 
 
 Answers
 Answer 1:
-select first_name, last_name, count(first_name) AS CountActor
+select first_name, last_name, count(actor_id) AS CountActor
 from actor
-group by first_name
+group by last_name
 order by CountActor Desc;
 
 Answer 2:
