@@ -24,8 +24,17 @@ Question 11. Find all payments that are less than or equal to $5?
 
 Question 12. Find all payments that are between $3 and $5?
 
-Question 
+Question 13. Find all the customers who have last names that come after Roberts?
 
+Question 14. Find all customers who have last names that come after (and include) Roberts?
+
+Question 15. Find all customers who have a last name that is either Roberts or Jones?
+
+Question 16. Find all customers who have a first name of Linda or a last name of Roberts?
+
+Question 17. Create a variable called lname, search for a last name that matches if lname equals Roberts? (should get the same answer as 8)
+
+Question 18. 
 Answers
 Answer 1:
 select first_name, last_name, count(first_name) AS CountActor
@@ -89,5 +98,41 @@ Answer 12
 SELECT * 
 FROM payment
 WHERE amount BETWEEN 3 and 5;
+
+Answer 13
+SELECT * 
+FROM customer
+WHERE last_name > "Roberts";
+
+Answer 14
+SELECT * 
+FROM customer
+WHERE last_name >= "Roberts";
+
+Answer 15
+SELECT * 
+FROM customer
+WHERE last_name IN ("Roberts", "Jones");
+
+Answer 16
+SELECT * 
+FROM customer
+WHERE last_name = "Roberts" OR first_name = "Linda";
+
+Answer 17
+SET @lname = "Roberts";
+SELECT * 
+FROM customer
+WHERE last_name = @lname;
+
+Answer 18
+SELECT payment_id, amount,
+(CASE
+	WHEN amount > 5.99 THEN "This payment amount > 5.99"
+    WHEN amount = 5.99 THEN "This is equal to 5.99"
+    ELSE "This payment is less than 5.99"
+    END) As paymentDescription
+    FROM payment;
+
 
 
