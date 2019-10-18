@@ -34,7 +34,8 @@ Question 16. Find all customers who have a first name of Linda or a last name of
 
 Question 17. Create a variable called lname, search for a last name that matches if lname equals Roberts? (should get the same answer as 8)
 
-Question 18. 
+Question 18. Have a different statement appear based upon if the payment amount is equal to 5.99, less than 5.99, or more than 5.99.
+
 Answers
 Answer 1:
 select first_name, last_name, count(first_name) AS CountActor
