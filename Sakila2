@@ -11,10 +11,10 @@ Question 9. Return the lowest whole integer from the value 2.394.
 Question 10. Round each payment to a whole number with one decimal place.
 Question 11. How many customers do we have?
 Question 12. How many records are in the customer table? 
-Question 13.
-Question 14.
-Question 15.
-Question 16. 
+Question 13. How many email addresses do we have for customers?
+Question 14. How many cities are in countries that have the id of 20 or 103?
+Question 15. How many cities are in the United States and Canada in our database? 
+Question 16. Return a list of cities and the country name when the country id = 20 or 103.
 Question 17.
 Question 18.
 Question 19. 
@@ -82,3 +82,27 @@ FROM customer;
 Answer 12.
 SELECT COUNT(*) 
 FROM customer;
+
+Answer 13.
+SELECT COUNT(*) 
+FROM customer;
+
+Answer 14.
+SELECT country, COUNT(city_id) As 'Count of cities per country'
+FROM city
+INNER JOIN country ON city.country_id = country.country_id
+WHERE city.country_id = 20 or city.country_id =103
+GROUP BY city.country_id;
+
+Answer 15.
+SELECT country, COUNT(city_id) As 'Count of cities per country'
+FROM city
+INNER JOIN country ON city.country_id = country.country_id
+WHERE country.country = 'United States' OR country.country = 'Canada'
+GROUP BY city.country_id;
+
+Answer 16.
+SELECT country.country_id, city.city, country.country
+FROM city
+INNER JOIN country ON city.country_id = country.country_id
+WHERE country.country_id = 20 OR country.country_id = 103
