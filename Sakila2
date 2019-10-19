@@ -4,6 +4,22 @@ Question 2. Compare the total sales for each store.
 Question 3. Show the total sales by staff member in each store.
 Question 4. Show the total sales by staff member in each store but only for total amounts by staff member greater than 16,000.
 Question 5. Show the total sales by for staff id equal to 1 in each store but only for total amounts greater than 16,000.
+Question 6. Round each payment to a whole number.
+Question 7. Calculate 11^3.
+Question 8. Return the highest whole integer above the value 2.394.
+Question 9. Return the lowest whole integer from the value 2.394.
+Question 10. Round each payment to a whole number with one decimal place.
+Question 11. How many customers do we have?
+Question 12. How many records are in the customer table? 
+Question 13.
+Question 14.
+Question 15.
+Question 16. 
+Question 17.
+Question 18.
+Question 19. 
+Question 20.
+
 
 Answers
 
@@ -41,4 +57,28 @@ WHERE payment.staff_id = 1
 GROUP BY payment.staff_id, customer.store_id
 HAVING
 	SUM(payment.amount) > 16000;
-    
+	
+Answer 6.
+SELECT ROUND(amount)
+FROM payment;
+
+Answer 7.
+SELECT POW(11, 3);
+
+Answer 8.
+SELECT CEILING(2.394);
+
+Answer 9.
+SELECT FLOOR(2.394);
+
+Answer 10.
+SELECT ROUND(amount, 1)
+FROM payment;
+
+Answer 11.
+SELECT COUNT(customer_id)
+FROM customer;
+
+Answer 12.
+SELECT COUNT(*) 
+FROM customer;
