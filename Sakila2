@@ -3,6 +3,7 @@ Question 1. What are the total amounts each customer spent, only return the cust
 Question 2. Compare the total sales for each store.
 Question 3. Show the total sales by staff member in each store.
 Question 4. Show the total sales by staff member in each store but only for total amounts by staff member greater than 16,000.
+Question 5. Show the total sales by for staff id equal to 1 in each store but only for total amounts greater than 16,000.
 
 Answers
 
@@ -32,3 +33,12 @@ GROUP BY payment.staff_id, customer.store_id
 HAVING
 	SUM(payment.amount) > 16000;
  
+Answer 5.
+SELECT SUM(payment.amount) AS Sum_amount, customer.store_id, payment.staff_id
+From payment
+INNER JOIN customer ON payment.customer_id = customer.customer_id
+WHERE payment.staff_id = 1
+GROUP BY payment.staff_id, customer.store_id
+HAVING
+	SUM(payment.amount) > 16000;
+    
