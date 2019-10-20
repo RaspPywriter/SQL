@@ -2,6 +2,7 @@ Questions
 1. Create view, CustomerNames, that shows customer's first and last name and the date of movie rental.
 2. How do you get CustomerNames to run?
 3. Create a function (GetActorName) to return an actor name based on passing the actor id. And show how to run it.
+4. Create a trigger that is activated when there is an update to the actor_copy table.
 
 Answers
 1.
@@ -27,3 +28,14 @@ RETURN actor_name;
 END //
 Select GetActorName(50) as 'Actor Name'
 
+4.
+delimiter //
+
+CREATE TRIGGER Test_Trigger
+AFTER UPDATE ON actor
+FOR EACH ROW
+BEGIN
+UPDATE actor_copy
+SET last_update = NOW();
+END//
+delimiter ;
