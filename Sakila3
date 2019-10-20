@@ -8,6 +8,15 @@ Questions
 7. Return the first three letters of each customer's first name.
 8. Return the number of characters in each customer's first name.
 9. Return the number of letters in the longest customer first name.
+10. Check to see if a customer's first name is longer than last name, or the same, or last name is longer than first name.
+11. Check to see if a customer's first name is identical to last name.
+12. Check if a customer has the same first and last name.
+13. How to get today's date?
+14. Return the day from the payment date.
+15. Return the month from the payment date.
+16. Return the week of the year from the payment date.
+17. Alias the payment date as Due Date and add one month to that date and alias that as Past Due Date.
+18. Give the number of days between 10/21/2019 and 12/31/2019?
 
 Answers
 1.
@@ -47,3 +56,40 @@ FROM customer;
 9.
 SELECT MAX(LENGTH(first_name)) As 'Max length in the column'
 FROM customer;
+
+10.
+SELECT STRCMP(first_name, last_name) As Result
+FROM customer;
+/* if result is 0 then they are identical, if -1 then first name is longer, if 1 last name is longer*/
+
+11.
+SELECT STRCMP(first_name, last_name) As Result
+FROM customer
+WHERE STRCMP(first_name, last_name) = 0;
+
+12.
+SELECT first_name, last_name, first_name LIKE last_name AS 'Same name'
+FROM customer;
+/* if you get a 0 then they are not the same, if you get a 1 they are the same*/
+
+13.
+SELECT CURDATE();
+
+14.
+SELECT DAY(payment_date)
+FROM payment
+
+15.
+SELECT MONTH(payment_date)
+FROM payment
+
+16.
+SELECT WEEK(payment_date)
+FROM payment
+
+17.
+SELECT payment_date AS 'Due Date', DATE_ADD(payment_date, INTERVAL 1 MONTH) As 'Past Due Date'
+FROM payment;
+
+18.
+SELECT DATEDIFF('2019-12-31', '2019-10-21')
