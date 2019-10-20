@@ -1,0 +1,23 @@
+Questions
+1. Create a procedure that allows you to get the category of a movie, using category ID. Also add the statement to call the procedure.
+2. Create a procedure that allows you to create a new category of movie. 
+
+Answers
+1
+CREATE PROCEDURE Get_Category(cat_id INT)
+BEGIN
+SELECT * FROM category
+WHERE category_id = cat_id;
+END!
+delimiter ;
+CALL Get_Category(3);
+
+2
+delimiter !
+CREATE PROCEDURE New_Category(cat_name varchar(30))
+BEGIN
+INSERT INTO category(name, last_update)
+VALUES (cat_name, now());
+END!
+delimiter ;
+CALL New_Category('Educational');
