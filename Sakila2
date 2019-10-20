@@ -15,7 +15,7 @@ Question 13. How many email addresses do we have for customers?
 Question 14. How many cities are in countries that have the id of 20 or 103?
 Question 15. How many cities are in the United States and Canada in our database? 
 Question 16. Return a list of cities and the country name when the country id = 20 or 103.
-Question 17.
+Question 17. 
 Question 18.
 Question 19. 
 Question 20.
@@ -84,7 +84,7 @@ SELECT COUNT(*)
 FROM customer;
 
 Answer 13.
-SELECT COUNT(*) 
+SELECT COUNT(email) 
 FROM customer;
 
 Answer 14.
