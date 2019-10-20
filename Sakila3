@@ -17,6 +17,10 @@ Questions
 16. Return the week of the year from the payment date.
 17. Alias the payment date as Due Date and add one month to that date and alias that as Past Due Date.
 18. Give the number of days between 10/21/2019 and 12/31/2019?
+19. Determine how many days movies were rented.
+20. Determine how long someone has been a customer in days.
+21. Determine how long someone has been a customer in years.
+22. Determine how long someone has been a customer to the whole year.
 
 Answers
 1.
@@ -93,3 +97,19 @@ FROM payment;
 
 18.
 SELECT DATEDIFF('2019-12-31', '2019-10-21')
+
+19.
+SELECT rental_id, DATEDIFF(return_date, rental_date) As 'Rented for (in days)'
+FROM rental;
+
+20.
+SELECT DATEDIFF(CURDATE(), create_date) As 'Customer For'
+FROM customer;
+
+21.
+SELECT (DATEDIFF(CURDATE(), create_date)/365) As 'Customer For (years)'
+FROM customer;
+
+22. 
+SELECT ROUND((DATEDIFF(CURDATE(), create_date)/365)) As 'Customer For (years)'
+FROM customer;
