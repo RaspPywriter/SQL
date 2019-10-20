@@ -1,0 +1,49 @@
+Questions
+1. What is the average payment for each customer?
+2. What is the total of all payments for all customers?
+3. What is the average of all payments for all customers?
+4. Get the total sum of each customer if it is greater than $150.
+5. Print each customer's full name.
+6. Combine each customer's street address, zip code and phone number into one customer contact information field.
+7. Return the first three letters of each customer's first name.
+8. Return the number of characters in each customer's first name.
+9. Return the number of letters in the longest customer first name.
+
+Answers
+1.
+SELECT customer_id, AVG(amount) AS 'Average Payment'
+FROM payment
+GROUP BY customer_id;
+
+2.
+SELECT SUM(amount) AS 'Total Payment'
+FROM payment;
+
+3.
+SELECT AVG(amount) AS 'Average Payment for all Customers'
+FROM payment;
+
+4.
+SELECT customer_id, SUM(amount) AS 'Total Payment'
+FROM payment
+GROUP BY customer_id
+HAVING SUM(amount) >= 150;
+
+5.
+SELECT CONCAT(first_name, ' ', last_name) As 'Full Name'
+FROM customer;
+6.
+SELECT CONCAT(address, ' - ', postal_code, ' - ', phone) As 'Customer Contact Information '
+FROM address;
+        
+7.
+SELECT LEFT(first_name, 3) As 'First 3 Characters'
+FROM customer;
+
+8.
+SELECT LENGTH(first_name) As 'First Name Length'
+FROM customer;
+
+9.
+SELECT MAX(LENGTH(first_name)) As 'Max length in the column'
+FROM customer;
