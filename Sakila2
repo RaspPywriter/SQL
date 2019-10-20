@@ -15,8 +15,8 @@ Question 13. How many email addresses do we have for customers?
 Question 14. How many cities are in countries that have the id of 20 or 103?
 Question 15. How many cities are in the United States and Canada in our database? 
 Question 16. Return a list of cities and the country name when the country id = 20 or 103.
-Question 17. 
-Question 18.
+Question 17. Return the lowest payment per customer along with the customer's id.
+Question 18. Return the highest payment per customer along with the customer's id.
 Question 19. 
 Question 20.
 
@@ -106,3 +106,13 @@ SELECT country.country_id, city.city, country.country
 FROM city
 INNER JOIN country ON city.country_id = country.country_id
 WHERE country.country_id = 20 OR country.country_id = 103
+
+Answer 17.
+SELECT customer_id, MIN(amount) AS 'Lowest Payment'
+FROM payment
+GROUP BY customer_id;
+
+Answer 18.
+SELECT customer_id, MAX(amount) AS 'Highest Payment'
+FROM payment
+GROUP BY customer_id;
