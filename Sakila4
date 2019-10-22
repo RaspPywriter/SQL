@@ -3,6 +3,8 @@ Questions
 2. How do you get CustomerNames to run?
 3. Create a function (GetActorName) to return an actor name based on passing the actor id. And show how to run it.
 4. Create a trigger that is activated when there is an update to the actor_copy table.
+5. Create an payment_audit table with the following fields: audit_id (int auto_increment), payment_id (int 10), amount (decimal 5, 2), changed_to (decimal 5,2), changed_on date, action (varchar 50). Audit_id is the primary key.
+6. Create a trigger called after_payment_update that inserts the changes into payment_audit table. 
 
 Answers
 1.
@@ -38,4 +40,30 @@ BEGIN
 UPDATE actor_copy
 SET last_update = NOW();
 END//
+delimiter ;
+
+5.
+CREATE TABLE payment_audit (
+	audit_id INT NOT NULL AUTO_INCREMENT,
+	payment_id INT(10) NOT NULL,
+	amount DECIMAL(5,2) NOT NULL,
+	changed_to DECIMAL(5,2) NOT NULL,
+    changed_on DATETIME NOT NULL,
+	ACTION VARCHAR(50) NOT NULL,
+	PRIMARY KEY (audit_id)
+	)
+  
+  6.
+  delimiter //
+CREATE TRIGGER after_payment_update
+AFTER UPDATE ON payment
+FOR EACH ROW
+BEGIN
+INSERT INTO payment_audit
+SET ACTION = 'Update',
+payment_id = OLD.payment_id,
+amount = OLD.amount, 
+changed_to = NEW.amount,
+changed_on = NOW();
+END //
 delimiter ;
