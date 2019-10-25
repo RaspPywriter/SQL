@@ -5,6 +5,8 @@ Questions
 4. Create a trigger that is activated when there is an update to the actor_copy table.
 5. Create an payment_audit table with the following fields: audit_id (int auto_increment), payment_id (int 10), amount (decimal 5, 2), changed_to (decimal 5,2), changed_on date, action (varchar 50). Audit_id is the primary key.
 6. Create a trigger called after_payment_update that inserts the changes into payment_audit table. 
+7. Create an event called event_scheduler, which clears out the payment_audit table. Then delete the event.
+
 
 Answers
 1.
@@ -67,3 +69,12 @@ changed_to = NEW.amount,
 changed_on = NOW();
 END //
 delimiter ;
+
+7.
+SET GLOBAL event_scheduler = ON;
+CREATE EVENT clear_payment_audit
+ON SCHEDULE EVERY 1 MINUTE 
+DO
+TRUNCATE TABLE payment_audit;
+
+DROP EVENT clear_payment_audit;
