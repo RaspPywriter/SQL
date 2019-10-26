@@ -14,6 +14,8 @@ Questions
 13. Drop idx_last_name from TestTable.
 14. How to compare two queries to see if the index was used: query one is select all customers from the customer table,
 other is to find a customer named jones and then a query to find a customer with the first name of Mary?
+15. How do you see all variables that starts with optimizer?
+16. How to turn the optimizer_search_depth to automatic? 
 
 
 Answers
@@ -133,3 +135,9 @@ FROM customer
 WHERE first_name = 'mary';
 
 #the query above is also not going to use a last name index.
+
+15. 
+SHOW VARIABLES LIKE 'optimizer%';
+
+16. #setting to 0 makes it automatic
+SET SESSION optimizer_search_depth = 0;
