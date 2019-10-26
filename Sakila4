@@ -9,6 +9,11 @@ Questions
 8. Create an explain statement for the rental table between the dates of 2018-01-01 and 2018-06-30, but only 100 entries.
 9. Create a table called TestTable with fields, id, first_name, last_name, set up an index on idx_last_name.
 10. Create a primary key called id on the TestTable you created above.
+11. Display all the indexes on TestTable.
+12. Optimize TestTable indexes.
+13. Drop idx_last_name from TestTable.
+14. How to compare two queries to see if the index was used: query one is select all customers from the customer table,
+other is to find a customer named jones and then a query to find a customer with the first name of Mary?
 
 
 Answers
@@ -103,3 +108,28 @@ CREATE INDEX idx_last_name ON TestTable (last_name);
 10. 
 ALTER TABLE TestTable
 ADD PRIMARY KEY  (id);
+
+11.
+SHOW INDEXES FROM TestTable;
+
+12. 
+OPTIMIZE TABLE TestTable;
+
+13. DROP INDEX idx_last_name on TestTable;
+
+14. 
+EXPLAIN
+SELECT * FROM customer;
+
+EXPLAIN
+SELECT first_name, last_name
+FROM customer
+WHERE last_name = 'jones';
+#should see second query uses the index on last name
+
+EXPLAIN 
+SELECT first_name, last_name
+FROM customer
+WHERE first_name = 'mary';
+
+#the query above is also not going to use a last name index.
