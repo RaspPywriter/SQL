@@ -6,6 +6,9 @@ Questions
 5. Create an payment_audit table with the following fields: audit_id (int auto_increment), payment_id (int 10), amount (decimal 5, 2), changed_to (decimal 5,2), changed_on date, action (varchar 50). Audit_id is the primary key.
 6. Create a trigger called after_payment_update that inserts the changes into payment_audit table. 
 7. Create an event called event_scheduler, which clears out the payment_audit table. Then delete the event.
+8. Create an explain statement for the rental table between the dates of 2018-01-01 and 2018-06-30, but only 100 entries.
+9. Create a table called TestTable with fields, id, first_name, last_name, set up an index on idx_last_name.
+10. Create a primary key called id on the TestTable you created above.
 
 
 Answers
@@ -78,3 +81,25 @@ DO
 TRUNCATE TABLE payment_audit;
 
 DROP EVENT clear_payment_audit;
+
+8.
+EXPLAIN
+SELECT *
+FROM rental
+WHERE DATE >= '2018-01-01'
+AND DATE < '2018-06-30'
+LIMIT 100;
+
+9.
+CREATE TABLE TestTable (
+id INT NOT NULL,
+first_name varchar(30) NOT NULL,
+last_name varchar (30) NOT NULL
+)
+;
+
+CREATE INDEX idx_last_name ON TestTable (last_name);
+
+10. 
+ALTER TABLE TestTable
+ADD PRIMARY KEY  (id);
