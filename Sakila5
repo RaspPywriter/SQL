@@ -2,10 +2,10 @@ Questions
 1. Which actors have a first name that contains 'at' in it?
 2. Which actors have a last name that ends in 'W'?
 3. How many distinct actors last names are there?
-4. Which last names are not repeated?
-5. Which last names appear more than once?
+4. Return a list of last names that are not repeated.
+5. Return a list of last names that appear more than once?
 6. Which actor has appeared in the most films?
-7. Is ‘Academy Dinosaur’ available for rent from Store 1?
+7. Is ‘Baby Hall’ available for rent from Store 2?
 8. Insert a record to represent Mary Smith renting ‘Academy Dinosaur’ from Mike Hillyer at Store 1 today .
 9. When is ‘Academy Dinosaur’ due?
 10. What is that average running time of all the films in the sakila DB?
@@ -29,3 +29,26 @@ SELECT COUNT(DISTINCT last_name)
 FROM actor;
 
 4. 
+SELECT last_name
+from actor 
+GROUP BY last_name 
+HAVING COUNT(*) = 1;
+
+5.
+SELECT last_name
+from actor 
+GROUP BY last_name 
+HAVING COUNT(*) > 1;
+
+6.
+SELECT actor.first_name, actor.last_name, count(film_actor.actor_id) 
+from actor 
+INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id 
+GROUP BY film_actor.actor_id
+ORDER BY count(film_actor.actor_id)	desc
+LIMIT 1;
+
+7.
+
+
+
