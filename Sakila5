@@ -74,8 +74,10 @@ WHERE film.title = 'Baby Hall'
                       WHERE rental.inventory_id = inventory.inventory_id
                       AND rental.return_date IS NULL);
 10
-insert into rental (rental_date, inventory_id, customer_id, staff_id)
-values (NOW(), 210, 1, 2);
+INSERT INTO rental (rental_date, inventory_id, customer_id, staff_id)
+VALUES (NOW(), 210, 1, 2);
 
 11.
-select rental_duration from film where film_id = 210;
+SELECT rental_duration 
+FROM film 
+WHERE film_id = 210;
