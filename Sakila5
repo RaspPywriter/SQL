@@ -62,4 +62,14 @@ FROM payment
 Order by amount DESC
 Limit 1, 1
 
-
+9.
+SELECT DISTINCT (inventory.inventory_id)
+FROM inventory 
+JOIN store USING (store_id)
+JOIN film USING (film_id)
+JOIN rental USING (inventory_id)
+WHERE film.title = 'Baby Hall'
+      AND store.store_id = 2
+      AND NOT EXISTS (SELECT * FROM rental
+                      WHERE rental.inventory_id = inventory.inventory_id
+                      AND rental.return_date IS NULL);
