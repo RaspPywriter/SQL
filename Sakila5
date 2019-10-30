@@ -8,7 +8,7 @@ Questions
 7. Find the top five payments made, excluding ties?
 8. Find the second highest amount paid for rentals (excluding ties)?
 9. Is ‘Baby Hall’ available for rent from Store 2?
-10. Insert a record to represent Mary Smith renting ‘Academy Dinosaur’ from Mike Hillyer at Store 1 today .
+10. Insert a record to represent Mary Smith renting ‘Baby Hall’ from Jon Stevens at Store 2 today.
 11. When is ‘Academy Dinosaur’ due?
 12. What is that average running time of all the films in the sakila DB?
 13. What is the average running time of films by category?
@@ -73,3 +73,6 @@ WHERE film.title = 'Baby Hall'
       AND NOT EXISTS (SELECT * FROM rental
                       WHERE rental.inventory_id = inventory.inventory_id
                       AND rental.return_date IS NULL);
+10
+insert into rental (rental_date, inventory_id, customer_id, staff_id)
+values (NOW(), 1, 1, 2);
