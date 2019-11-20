@@ -3,3 +3,8 @@ Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from 
 SELECT DISTINCT CITY
 FROM STATION
 WHERE LOWER(SUBSTR(CITY,1,1)) in ('a','e','i','o','u');
+
+MySQL Answer
+SELECT DISTINCT CITY
+FROM STATION
+WHERE RIGHT(LOWER(CITY),1) in ('a','e','i','o','u');    
