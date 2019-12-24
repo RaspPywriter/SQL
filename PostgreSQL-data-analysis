@@ -13,3 +13,9 @@ ORDER BY pctAsian DESC
 SELECT SUM(p0010001) AS ‘CountySum’, ROUND(AVG(p0010001),0) AS ‘CtyAvg’, percentile_cont(.5)
 WITHIN GROUP(ORDER BY p0010001) AS ‘CtyMedian’
 FROM us_counties_2010
+
+--Calculate quartiles
+SELECT percentile_cont(array[.25,.5,.75])
+WITHIN GROUP(ORDER BY p0010001) AS ‘quartiles’
+FROM us_counties_2010
+
