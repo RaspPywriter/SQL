@@ -8,3 +8,8 @@ SELECT geo_name, state_us_abbreviation AS St,
 (Cast(p0010006 AS numeric(8, 1))/p0010001)*100 AS pctAsian
 FROM us_counties_2010
 ORDER BY pctAsian DESC
+
+-- Step Three: Calculate County Sum, County Average, County Median
+SELECT SUM(p0010001) AS ‘CountySum’, ROUND(AVG(p0010001),0) AS ‘CtyAvg’, percentile_cont(.5)
+WITHIN GROUP(ORDER BY p0010001) AS ‘CtyMedian’
+FROM us_counties_2010
