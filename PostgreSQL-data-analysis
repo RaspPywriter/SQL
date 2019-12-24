@@ -1,0 +1,10 @@
+-- Analysis step one make sure there are no data issues - add up each row and compare to row total, should be 0 in each row
+SELECT geo_name, state_us_abbreviation, p0010001 AS total, (p0010003 + p0010004 + p0010005 + p0010006 + p0010007 + p0010008 + p0010009) - p0010001 AS difference
+FROM us_counties_2010
+ORDER BY difference DESC
+
+--Step Two: Find percentage of Asian residents of each county, order by largest % 
+SELECT geo_name, state_us_abbreviation AS St,
+(Cast(p0010006 AS numeric(8, 1))/p0010001)*100 AS pctAsian
+FROM us_counties_2010
+ORDER BY pctAsian DESC
